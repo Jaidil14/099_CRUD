@@ -48,7 +48,7 @@ app.post('/api/users', (req, res) => {
     }
 
     db.query (
-        'INSERT INTO mahasiswa (nama, nim, kelas) VALUES (?, ?, ?',
+        'INSERT INTO mahasiswa (nama, nim, kelas) VALUES (?, ?, ?)',
         [nama, nim, kelas],
         (err, results) => {
             if(err) {
@@ -64,7 +64,7 @@ app.put('/api/users/:id' , (req, res) => {
     const userId = req.params.id;
     const {nama, nim, kelas} = req.body;
     db.query(
-        'UPDATE mahasiswa SET nama = ?, nim = ?, kelas = ?, WHERE id = ?',
+        'UPDATE mahasiswa SET nama = ?, nim = ?, kelas = ? WHERE id = ?',
         [nama, nim, kelas, userId],
         (err, results) => {
             if (err) {
