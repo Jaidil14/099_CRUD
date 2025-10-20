@@ -16,7 +16,7 @@ app.listen(PORT, () => {
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Jaidil141201',
+    password: '123',
     database: 'mahasiswa',
     port: 3309
 })
@@ -41,7 +41,7 @@ app.get('/api/users', (req, res) => {
 });
 
 app.post('/api/users', (req, res) => {
-    const { nama, nim, kelas, prodi} = req.body;
+    const { nama, nim, kelas} = req.body;
 
     if (!nama || !nim || !kelas) {
         return res.status(400).json({ message: 'nama, nim, kelas wajib diisi'})
