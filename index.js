@@ -21,3 +21,22 @@ const db = mysql.createConnection({
     port: 3309
 })
 
+db.connect((err) => {
+    if (err) {
+    console.error('Error connecting to MySQL:' + error.stack);
+    return;
+    }
+    console.log('Connection successfully!');
+});
+
+app.get('/api/users', (req, res) => {
+    db.query('SELECT * FROM mahasiswa', (err, results) => {
+        if (err) {
+            console.error('Error executing query:0' + err.stack);
+            res.status(500).send('Error fetching users');
+            return;
+        }
+        res.json(results);
+    })
+})
+
